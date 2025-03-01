@@ -13,11 +13,13 @@
         android:id="@+id/diversityMovieBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue"
         android:text="다양성영화" />
     <Button
         android:id="@+id/commercialMovieBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/blue"
         android:text="상업영화" />
     <EditText
         android:id="@+id/nationResultBox"

@@ -30,11 +30,12 @@ class MovieActivity : AppCompatActivity() {
         recyclerView = ActivityMovie.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        fetchMovies(intent.getStringExtra("multiMovie").toString(), intent.getStringExtra("multiMovie").toString())
+        fetchMovies(intent.getStringExtra("multiMovie").toString(), intent.getStringExtra("nationResult").toString())
     }
 
     // 영화API 호출
-    private fun fetchMovies(mutiMovie : String, nationCode : String) {
+    // 힐트, 룸데이터베이스, 노란줄 제거, ConstraintLayout로 변경
+    private fun fetchMovies(mutiMovie : String, nationResult : String) {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -48,7 +49,7 @@ class MovieActivity : AppCompatActivity() {
         calendar.add(Calendar.DATE, -1)
         val targetDate = dateFormat.format(calendar.time)
 
-        apiService.getBoxOffice(API_KEY, targetDate, mutiMovie, nationCode).enqueue(object :
+        apiService.getBoxOffice(API_KEY, targetDate, mutiMovie, nationResult).enqueue(object :
             Callback<BoxOfficeResponse> {
             override fun onResponse(
                 call: Call<BoxOfficeResponse>,
